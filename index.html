@@ -3,12 +3,46 @@
 <head>
 </head>
 <body>
+               <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+
+            <!-- TODO: Add SDKs for Firebase products that you want to use
+                 https://firebase.google.com/docs/web/setup#available-libraries -->
+            <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-analytics.js"></script>
+
+            <script>
+              // Your web app's Firebase configuration
+              var firebaseConfig = {
+                apiKey: "AIzaSyDj-5xqJgU1OU1aUIcydoif73ff932K-dc",
+                authDomain: "uploadtest-f415e.firebaseapp.com",
+                databaseURL: "https://uploadtest-f415e.firebaseio.com",
+                projectId: "uploadtest-f415e",
+                storageBucket: "uploadtest-f415e.appspot.com",
+                messagingSenderId: "860980801076",
+                appId: "1:860980801076:web:591014a98a48e9237ee461",
+                measurementId: "G-2PME3RVPZB"
+              };
+              // Initialize Firebase
+              firebase.initializeApp(firebaseConfig);
+              firebase.analytics();
+            </script>
    <div>
        <button id="upload">
            Upload
        </button>
    </div> 
    <script>
+      var button = document.createElement("button");
+button.innerHTML = "Do Something";
+
+// 2. Append somewhere
+var body = document.getElementsByTagName("body")[0];
+body.appendChild(button);
+
+// 3. Add event handler
+button.addEventListener ("click", function() {
+  alert("did something");
+});
             // Create a root reference
       var storageRef = firebase.storage().ref();
 
@@ -21,6 +55,11 @@
       // While the file names are the same, the references point to different files
       mountainsRef.name === mountainImagesRef.name            // true
       mountainsRef.fullPath === mountainImagesRef.fullPath    // false
+      
+      
+      ref.put(mountainsRef).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+});
    </script>
    
 </body>
