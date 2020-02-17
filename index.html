@@ -25,25 +25,7 @@
               // Initialize Firebase
               firebase.initializeApp(firebaseConfig);
               firebase.analytics();
-            </script>
-   <div>
-       <button id="button">
-           Upload
-       </button>
-   </div> 
-   <script>
-      var button = document.createElement("button");
-button.innerHTML = "Do Something";
-
-// 2. Append somewhere
-var body = document.getElementsByTagName("body")[0];
-body.appendChild(button);
-
-// 3. Add event handler
-button.addEventListener ("click", function() {
-  alert("did something");
-});
-            // Create a root reference
+              // Create a root reference
       var storageRef = firebase.storage().ref();
 
       // Create a reference to 'mountains.jpg'
@@ -55,10 +37,25 @@ button.addEventListener ("click", function() {
       // While the file names are the same, the references point to different files
       mountainsRef.name === mountainImagesRef.name            // true
       mountainsRef.fullPath === mountainImagesRef.fullPath    // false
-      
-      
-      ref.put(mountainsRef).then(function(snapshot) {
+            </script>
+    
+   <script>
+      var button = document.createElement("button");
+button.innerHTML = "Upload";
+
+// 2. Append somewhere
+var body = document.getElementsByTagName("body")[0];
+body.appendChild(button);
+
+// 3. Add event handler
+button.addEventListener ("click", function() {
+  ref.put(mountainsRef).then(function(snapshot) {
       console.log('Uploaded a blob or file!');
+});
+            
+      
+      
+      
 });
    </script>
    
