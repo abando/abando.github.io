@@ -1,63 +1,55 @@
+ 
 <!DOCTYPE html>
 <html>
-<head>
-</head>
-<body>
-               <!-- The core Firebase JS SDK is always required and must be listed first -->
-            <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
-
-            <!-- TODO: Add SDKs for Firebase products that you want to use
-                 https://firebase.google.com/docs/web/setup#available-libraries -->
-            <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-analytics.js"></script>
-
-            <script>
-              // Your web app's Firebase configuration
-              var firebaseConfig = {
-                apiKey: "AIzaSyDj-5xqJgU1OU1aUIcydoif73ff932K-dc",
-                authDomain: "uploadtest-f415e.firebaseapp.com",
-                databaseURL: "https://uploadtest-f415e.firebaseio.com",
-                projectId: "uploadtest-f415e",
-                storageBucket: "uploadtest-f415e.appspot.com",
-                messagingSenderId: "860980801076",
-                appId: "1:860980801076:web:591014a98a48e9237ee461",
-                measurementId: "G-2PME3RVPZB"
-              };
-              // Initialize Firebase
-              firebase.initializeApp(firebaseConfig);
-              firebase.analytics();
-              // Create a root reference
-      var storageRef = firebase.storage().ref();
-
-      // Create a reference to 'mountains.jpg'
-      var mountainsRef = storageRef.child('blank.pdf');
-
-      // Create a reference to 'images/mountains.jpg'
-      var mountainImagesRef = storageRef.child('docs/blank.pdf');
-
-      // While the file names are the same, the references point to different files
-      mountainsRef.name === mountainImagesRef.name            // true
-      mountainsRef.fullPath === mountainImagesRef.fullPath    // false
-            </script>
+  <head>
     
-   <script>
-      var button = document.createElement("button");
-button.innerHTML = "Upload";
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    
+    
 
-// 2. Append somewhere
-var body = document.getElementsByTagName("body")[0];
-body.appendChild(button);
 
-// 3. Add event handler
-button.addEventListener ("click", function() {
-  ref.put(mountainsRef).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-});
-            
-      
-      
-      
-});
-   </script>
-   
-</body>
+  </head>
+  <body>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-storage.js"></script>
+    <script>
+       
+      var firebaseConfig = {
+        apiKey: "AIzaSyCDaRSMRuLBYruloASbyVHNbhYIZP2jbv8",
+        authDomain: "upload-7b50e.firebaseapp.com",
+        databaseURL: "https://upload-7b50e.firebaseio.com",
+        projectId: "upload-7b50e",
+        storageBucket: "upload-7b50e.appspot.com",
+        messagingSenderId: "971776402474",
+        appId: "1:971776402474:web:c094e7de40922e8bc78f53",
+        measurementId: "G-7XD2R3B5P8"
+      };
+  
+        firebase.initializeApp(firebaseConfig);
+
+        
+     function uploadImage(){
+          const ref = firebase.storage().ref();
+          const file = document.querySelector("#photo").files[0];
+          const name = new Date() + "-" + file.name;
+          const metadata = {
+            contentType:file.type
+          }
+          const task = ref.child(name).put(file, metadata);
+          task;
+        }   
+    </script>
+   ​    <input type = "file" id = "photo">
+       <button onclick ="uploadImage()">Upload Image</button>
+
+    <script>
+    
+    </script>       
+    <script src="script.js"></script>
+    
+
+  </body>
 </html>
