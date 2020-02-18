@@ -34,7 +34,7 @@
      function uploadImage(){
           const ref = firebase.storage().ref();
           const file = document.querySelector("#photo").files[0];
-          const name = new Date() + "-" + file.name;
+          const name = file.name;
           const metadata = {
             contentType:file.type
           }
